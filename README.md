@@ -2,10 +2,9 @@
 
 A powerful web application built with Streamlit to extract text from ID card images using Tesseract OCR. This tool is designed to be simple, efficient, and user-friendly.
 
-![App Screenshot](https://user-images.githubusercontent.com/10359910/188335001-25f3f27e-2c0a-4417-a72a-2f5e2cf5f6f1.png)
-*(Replace this with a screenshot of your running application)*
+## 📸 App Screenshot
+<img width="2559" height="1300" alt="Screenshot 2025-07-12 122058" src="https://github.com/user-attachments/assets/053438a4-0ffe-40ba-9d4a-c150c3dbabea" /> <img width="2558" height="1270" alt="Screenshot 2025-07-12 122643" src="https://github.com/user-attachments/assets/39dee41e-e4b4-43e9-a8ac-b1717be005e7" />
 
----
 
 ## ✨ Features
 
