@@ -3,6 +3,7 @@ import cv2
 import pytesseract
 import numpy as np
 from PIL import Image
+import platform  # 🆕 لمعرفة نظام التشغيل
 
 # إعداد الصفحة
 st.set_page_config(page_title="🪪 ID Card OCR App", layout="centered")
@@ -16,11 +17,13 @@ st.markdown("""
     <hr style='margin-top: 20px; border: 1px solid #ddd;' />
 """, unsafe_allow_html=True)
 
+# التحقق من نظام التشغيل وضبط المسار إن لزم
+if platform.system() == "Windows":
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# في لينكس (Streamlit Cloud)، لا حاجة لتغيير المسار
+
 # رفع الصورة
 upload_img = st.file_uploader("📤 Upload your ID Image", type=["jpg", "jpeg", "png"])
-
-# تهيئة Tesseract (مسار Windows فقط)
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # دالة استخراج النص
 def extract_text_from_image(image):
@@ -54,22 +57,21 @@ if upload_img is not None:
     with st.expander("🔎 Show Full Extracted Text"):
         st.code(ext_text, language='text')
 
-# قسم About داخل Expander
-with st.expander("ℹ️ About This App"):
-    st.markdown("""
-        ### 💡 Idea:
-        This application is designed to automatically extract text from ID card images using **OCR (Optical Character Recognition)** technology. It’s especially useful for quickly reading information from scanned documents, IDs, or printed text.
+# قسم About دائم
+st.markdown("""
+    <hr style='margin-top:40px; border-top: 1px solid #bbb;' />
+    <div style='background-color: #f9f9f9; padding: 25px; border-radius: 10px;'>
+        <h3 style='color: #112D4E;'>ℹ️ About This App</h3>
+        <p style='font-size: 16px; color: #333333;'>
+            <strong>💡 Idea:</strong> This application helps you extract text from ID card images using modern OCR (Optical Character Recognition) technology. It's useful for digitizing printed information quickly and accurately.<br><br>
 
-        ### ⚙️ How It Works:
-        - The app uses **Tesseract OCR** to process uploaded images.
-        - Images are preprocessed for better recognition (grayscale, cleanup).
-        - The text is displayed line-by-line dynamically.
+            <strong>⚙️ How It Works:</strong><br>
+            - The image is processed using OpenCV.<br>
+            - Tesseract OCR engine extracts text from the image.<br>
+            - All detected lines are shown dynamically.<br><br>
 
-        ### 👨‍💻 Developed By:
-        **Mohamed Mostafa**
-        
-        Built with ❤️ using Python and Streamlit.
-    """)
-
-# فاصل سفلي
-st.markdown("<hr style='border-top: 1px solid #ccc; margin-top:40px;' />", unsafe_allow_html=True)
+            <strong>👨‍💻 Developed By:</strong> Mohamed Mostafa<br>
+            Built with ❤️ using Python & Streamlit.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
