@@ -57,21 +57,22 @@ if upload_img is not None:
     with st.expander("🔎 Show Full Extracted Text"):
         st.code(ext_text, language='text')
 
-# قسم About دائم
-st.markdown("""
-    <hr style='margin-top:40px; border-top: 1px solid #bbb;' />
-    <div style='background-color: #f9f9f9; padding: 25px; border-radius: 10px;'>
-        <h3 style='color: #112D4E;'>ℹ️ About This App</h3>
-        <p style='font-size: 16px; color: #333333;'>
-            <strong>💡 Idea:</strong> This application helps you extract text from ID card images using modern OCR (Optical Character Recognition) technology. It's useful for digitizing printed information quickly and accurately.<br><br>
+# قسم About داخل Expander
+with st.expander("ℹ️ About This App"):
+    st.markdown("""
+        ### 💡 Idea:
+        This application is designed to automatically extract text from ID card images using **OCR (Optical Character Recognition)** technology. It’s especially useful for quickly reading information from scanned documents, IDs, or printed text.
 
-            <strong>⚙️ How It Works:</strong><br>
-            - The image is processed using OpenCV.<br>
-            - Tesseract OCR engine extracts text from the image.<br>
-            - All detected lines are shown dynamically.<br><br>
+        ### ⚙️ How It Works:
+        - The app uses **Tesseract OCR** to process uploaded images.
+        - Images are preprocessed for better recognition (grayscale, cleanup).
+        - The text is displayed line-by-line dynamically.
 
-            <strong>👨‍💻 Developed By:</strong> Mohamed Mostafa<br>
-            Built with ❤️ using Python & Streamlit.
-        </p>
-    </div>
-""", unsafe_allow_html=True)
+        ### 👨‍💻 Developed By:
+        **Mohamed Mostafa**
+        
+        Built with ❤️ using Python and Streamlit.
+    """)
+
+# فاصل سفلي
+st.markdown("<hr style='border-top: 1px solid #ccc; margin-top:40px;' />", unsafe_allow_html=True)
