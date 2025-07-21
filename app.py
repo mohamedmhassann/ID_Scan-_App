@@ -39,7 +39,7 @@ if upload_img is not None:
     img = Image.open(upload_img)
     img_array = np.array(img)
 
-    st.image(img_array, caption="🖼️ Uploaded ID", use_column_width=True)
+    st.image(img_array, caption="🖼️ Uploaded ID", use_container_width=True)
 
     with st.spinner("🔍 Extracting text..."):
         ext_text = extract_text_from_image(img_array)
